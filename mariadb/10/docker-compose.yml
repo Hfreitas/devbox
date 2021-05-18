@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  db.mariadb10.devbox.local:
+    image: mariadb:10
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - mariadb10_data:/var/lib/mysql
+    networks:
+      - mariadb10_network_local
+    ports:
+      - 13306:3306
+  phpmyadmin.mariadb10.devbox.local:
+    image: phpmyadmin/phpmyadmin:5
+    depends_on:
+      - db.mariadb10.devbox.local
+    environment:
+      PMA_HOST: db.mariadb10.devbox.local
+      PMA_USER: root
+      PMA_PASSWORD: password
+    networks:
+      - mariadb10_network_local
+    ports:
+      - 23306:80
+
+volumes:
+  mariadb10_data:
+
+networks:
+  mariadb10_network_local:
+    driver: bridge

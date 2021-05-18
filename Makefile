@@ -6,56 +6,23 @@ define print_info
 	@echo "\t$(1)"
 endef
 
-mysql5.7-up:
-	docker-compose -f mysql/5.7/docker-compose.yml -p devbox up -d --force-recreate
+mysql8-up:
+	docker-compose -f mysql/8/docker-compose.yml -p devbox up -d --force-recreate
 
-mysql5.7-down:
-	docker-compose -f mysql/5.7/docker-compose.yml -p devbox down
+mysql8-down:
+	docker-compose -f mysql/8/docker-compose.yml -p devbox down
 
-mysql5.7-status:
-	docker-compose -f mysql/5.7/docker-compose.yml -p devbox ps
+mysql8-status:
+	docker-compose -f mysql/8/docker-compose.yml -p devbox ps
 
-mysql5.7-logs:
-	docker-compose -f mysql/5.7/docker-compose.yml -p devbox logs -f
+mysql8-logs:
+	docker-compose -f mysql/8/docker-compose.yml -p devbox logs -f
 
-mysql5.7-info:
-
-	$(call print_breakline)
-
-	$(call print_info,"MySQL 5.7 information")
+mysql8-info:
 
 	$(call print_breakline)
 
-	$(call print_info,"Host: 0.0.0.0")
-	$(call print_info,"Port: 13306")
-	$(call print_info,"User: root")
-	$(call print_info,"Password: password")
-
-	$(call print_info,"PhpMyAdmin: http://0.0.0.0:23306")
-
-	$(call print_info,"Adminer: http://0.0.0.0:33306")
-
-	$(call print_info,"DbGate: http://0.0.0.0:43306")
-
-	$(call print_breakline)
-
-mariadb10.5-up:
-	docker-compose -f mariadb/10.5/docker-compose.yml -p devbox up -d --force-recreate
-
-mariadb10.5-down:
-	docker-compose -f mariadb/10.5/docker-compose.yml -p devbox down
-
-mariadb10.5-status:
-	docker-compose -f mariadb/10.5/docker-compose.yml -p devbox ps
-
-mariadb10.5-logs:
-	docker-compose -f mariadb/10.5/docker-compose.yml -p devbox logs -f
-
-mariadb10.5-info:
-
-	$(call print_breakline)
-
-	$(call print_info,"MariaDB 10.5 information")
+	$(call print_info,"MySQL 8 information")
 
 	$(call print_breakline)
 
@@ -66,9 +33,34 @@ mariadb10.5-info:
 
 	$(call print_info,"PhpMyAdmin: http://0.0.0.0:23306")
 
-	$(call print_info,"Adminer: http://0.0.0.0:33306")
+	$(call print_breakline)
 
-	$(call print_info,"DbGate: http://0.0.0.0:43306")
+mariadb10-up:
+	docker-compose -f mariadb/10/docker-compose.yml -p devbox up -d --force-recreate
+
+mariadb10-down:
+	docker-compose -f mariadb/10/docker-compose.yml -p devbox down
+
+mariadb10-status:
+	docker-compose -f mariadb/10/docker-compose.yml -p devbox ps
+
+mariadb10-logs:
+	docker-compose -f mariadb/10/docker-compose.yml -p devbox logs -f
+
+mariadb10-info:
+
+	$(call print_breakline)
+
+	$(call print_info,"MariaDB 10 information")
+
+	$(call print_breakline)
+
+	$(call print_info,"Host: 0.0.0.0")
+	$(call print_info,"Port: 13306")
+	$(call print_info,"User: root")
+	$(call print_info,"Password: password")
+
+	$(call print_info,"PhpMyAdmin: http://0.0.0.0:23306")
 
 	$(call print_breakline)
 
@@ -102,10 +94,6 @@ postgres13.2-info:
 	$(call print_info,"PgAdmin user: pgadmin4@pgadmin.postgres132.dev.local")
 	$(call print_info,"PgAdmin password: password")
 
-	$(call print_info,"phpPgAdmin host: http://0.0.0.0:35432")
-
-	$(call print_info,"DbGate host: http://0.0.0.0:45432")
-
 	$(call print_breakline)
 
 redis6.2-up:
@@ -129,8 +117,6 @@ redis6.2-info:
 
 	$(call print_info,"Host: 0.0.0.0")
 	$(call print_info,"Port: 16379")
-
-	$(call print_info,"phpRedisAdmin host: http://0.0.0.0:26379")
 
 	$(call print_info,"Redis Commander host: http://0.0.0.0:26380")
 
@@ -158,11 +144,7 @@ mongo4.4-info:
 	$(call print_info,"Host: 0.0.0.0")
 	$(call print_info,"Port: 37017")
 
-	$(call print_info,"Mongo express: http://0.0.0.0:38081")
-
 	$(call print_info,"DbGate: http://0.0.0.0:48081")
-
-	$(call print_info,"Nosqlclient: http://0.0.0.0:58081")
 
 	$(call print_breakline)
 
@@ -181,7 +163,7 @@ minio-logs:
 minio-info:
 	$(call print_breakline)
 
-	$(call print_info,"MongoDB 4.4 information")
+	$(call print_info,"Minio information")
 
 	$(call print_breakline)
 
@@ -216,7 +198,5 @@ kafka6.1-info:
 	$(call print_info,"Broke 3 Port: 9094")
 
 	$(call print_info,"Kafdrop: http://0.0.0.0:29000")
-
-	$(call print_info,"Kafka UI: http://0.0.0.0:28080")
 
 	$(call print_breakline)

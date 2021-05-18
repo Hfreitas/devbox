@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  db.mysql8.devbox.local:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - mysql8_data:/var/lib/mysql
+    networks:
+      - mysql8_network_local
+    ports:
+      - 13306:3306
+  phpmyadmin.mysql8.devbox.local:
+    image: phpmyadmin/phpmyadmin:5-fpm-alpine
+    depends_on:
+      - db.mysql8.devbox.local
+    environment:
+      PMA_HOST: db.mysql8.devbox.local
+      PMA_USER: root
+      PMA_PASSWORD: password
+    networks:
+      - mysql8_network_local
+    ports:
+      - 23306:80
+
+volumes:
+  mysql8_data:
+
+networks:
+  mysql8_network_local:
+    driver: bridge

@@ -4,7 +4,7 @@ Easy way to up development environments using Docker
 
 ## Services
 
-#### Mysql 5.7
+#### Mysql 8
 
 ```bash
 make mysql5.7-up
@@ -14,7 +14,7 @@ make mysql5.7-logs
 make mysql5.7-info
 ```
 
-#### MariaDB 10.5
+#### MariaDB 10
 
 ```bash
 make mariadb10.5-up
