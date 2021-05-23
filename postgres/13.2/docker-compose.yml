@@ -3,6 +3,7 @@ version: "3.8"
 services:
   db.postgres132.devbox.local:
     image: postgres:13.2-alpine
+    restart: always
     environment:
       POSTGRES_DB: dev
       POSTGRES_USER: postgres
